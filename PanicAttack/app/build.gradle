@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "info.guardianproject.fakepanicbutton"
+
+        //midSDK 15 only required for GeoTrigger/MapZen Lost library, otherwise 14 is okay
+        minSdkVersion 15
+        targetSdkVersion 23
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'info.guardianproject.panic:panic:0.5'
+
+    //for shake detection
+    compile 'com.squareup:seismic:1.0.2'
+
+    //for geofencing
+    compile 'com.mapzen.android:lost:2.0.0'
+
+    //you need the support files to support backwards compat with permission checks
+    compile 'com.android.support:support-v4:23.0.1'
+
+
+}
